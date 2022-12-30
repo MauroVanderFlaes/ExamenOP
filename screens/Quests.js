@@ -28,10 +28,16 @@ const Quests = ({navigation}) =>{
         <View>
             <FlatList data={Quests} renderItem={({item}) => (
               <View>
+                {item.yoast_head_json?.og_image !== undefined && (
+                    <Image
+                    style={{ width: 420, height: 200 }}
+                    source={{ uri: `${item.yoast_head_json.og_image[0].url}` }}
+                  />
+                )}
                 <Text>
                   <Text>{item.title.rendered}</Text>
                 </Text>
-                <Pressable onPress={() => navigation.navigate("QuestDetail", {itemTitle: item.title.rendered})}>
+                <Pressable onPress={() => navigation.navigate("QuestDetail", {itemTitle: item.title.rendered, itemDescription: item.yoast_head_json.og_description})}>
                   <Text>bekijk product:</Text>
                   </Pressable>
               </View>
