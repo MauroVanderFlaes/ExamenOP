@@ -1,10 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {Stylesheet, Text, View, Image, TextInput, Pressable, FlatList} from 'react-native';
+import {StyleSheet, Text, View, Image, TextInput, Pressable, FlatList} from 'react-native';
 
 
 const Quests = ({navigation}) =>{
 
     const [Quests, setQuests] = useState ([]);
+    const [counter, setCounter] = useState(0);
+    const increase = () => {
+        setCounter((currentCounter) => currentCounter + 1);
+      };
 
     const getQuests = async () => {
         try {
@@ -26,6 +30,10 @@ const Quests = ({navigation}) =>{
 
     return (
         <View>
+            <View >
+                <Image style={styles.cart} source={require("../assets/shopping-cart.png")}/>
+                <Text style={styles.counter}>{counter}</Text>
+            </View>
             <FlatList data={Quests} renderItem={({item}) => (
               <View>
                 {item.yoast_head_json?.og_image !== undefined && (
@@ -37,8 +45,8 @@ const Quests = ({navigation}) =>{
                 <Text>
                   <Text>{item.title.rendered}</Text>
                 </Text>
-                <Pressable onPress={() => navigation.navigate("QuestDetail", {itemTitle: item.title.rendered, itemDescription: item.yoast_head_json.og_description})}>
-                  <Text>bekijk product:</Text>
+                <Pressable onPress={() => navigation.navigate("QuestDetail", {itemImage: item.yoast_head_json.og_image[0].url,itemTitle: item.title.rendered, itemDescription: item.yoast_head_json.og_description, itemAuthor: item.yoast_head_json.author})}>
+                  <Text>Lees Meer</Text>
                   </Pressable>
               </View>
 
@@ -48,3 +56,15 @@ const Quests = ({navigation}) =>{
 }
 
 export default Quests;
+
+const styles = StyleSheet.create({
+    cart: {
+        width: 50,
+        height: 50,
+        marginLeft: 350,
+    },
+
+    counter: {
+        marginLeft: 350,
+    },
+});

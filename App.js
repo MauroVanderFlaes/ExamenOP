@@ -14,7 +14,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Quests" component={(Quests)} />
+        <Stack.Screen name="Meta products" component={(Quests)} />
         <Stack.Screen name="QuestDetail" component={(QuestDetail)} />
       </Stack.Navigator>
     </NavigationContainer>
@@ -28,4 +28,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  
 });
