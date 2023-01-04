@@ -14,12 +14,12 @@ const Detail = (props) => {
   return (
     <View>
       <Image
-        style={{ width: 400, height: 200 }}
+        style={styles.image}
         source={{ uri: `${props.Image}` }}
       />
       <Text style={styles.Title}>{props.Title}</Text>
-      <Text>{props.Description}</Text>
-      <Text>Author: {props.Author}</Text>
+      <Text style={styles.Description}>{props.Description}</Text>
+      <Text style={styles.Author}>Author: {props.Author} van Meta</Text>
     </View>
   );
 };
@@ -27,9 +27,31 @@ const Detail = (props) => {
 export default Detail;
 
 const styles = StyleSheet.create({
+  image: {
+    width: 420, 
+    height: 350, 
+    marginTop: 40,
+  },
   Title: {
-    fontSize: 20,
+    marginTop: 20,
+    fontSize: 28,
     textWidth: "Bold",
     textAlign: "center",
+    marginBottom: 20,
+    color: "#0080FB",
   },
+
+  Description: {
+    fontSize: 18,
+    marginBottom: 10,
+    marginLeft: 20,
+    marginRight: 20,
+  },
+
+  Author: {
+    fontSize: 15,
+    marginLeft: 20,
+    marginRight: 20,
+    color: "#0080FB",
+  }
 });

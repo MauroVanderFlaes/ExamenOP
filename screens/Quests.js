@@ -35,18 +35,8 @@ const Quests = ({ navigation }) => {
 
   return (
     <View>
-      <View>
-
-        <View
-          style={{
-            padding: 10,
-            flexDirection: "row",
-            width: "95%",
-            backgroundColor: "#d9dbda",
-            borderRadius: 10,
-            alignItems: "center",
-          }}
-        >
+      <View style={styles.Search}>
+        <View>
           <TextInput
             value={input}
             onChangeText={(text) => setInput(text)}
@@ -63,5 +53,14 @@ const Quests = ({ navigation }) => {
 export default Quests;
 
 const styles = StyleSheet.create({
-
+  Search: {
+    padding: 10,
+    flexDirection: "row",
+    width: "75%",
+    backgroundColor: "#d9dbda",
+    borderRadius: 10,
+    alignItems: "center",
+    marginLeft: 10,
+    marginTop: 10,
+  },
 });

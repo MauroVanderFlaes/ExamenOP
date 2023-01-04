@@ -17,7 +17,7 @@ const SearchFilter = ({ data, input, setInput, navigation }) => {
         setCounter((currentCounter) => currentCounter + 1);
     }
   return (
-    <View style={{ marginTop: 10 }}>
+    <View style={styles.upper}>
         <Image style={styles.cart} source={require("../assets/shopping-cart.png")}/>
         <Text style={styles.counter}>{counter}</Text>
       <FlatList
@@ -26,14 +26,14 @@ const SearchFilter = ({ data, input, setInput, navigation }) => {
         renderItem={({ item }) => {
           if (input === "") {
             return (
-              <View>
+              <View style={styles.article}>
                 {item.yoast_head_json?.og_image !== undefined && (
                   <Image
-                    style={{ width: 420, height: 200 }}
+                    style={styles.image}
                     source={{ uri: `${item.yoast_head_json.og_image[0].url}` }}
                   />
                 )}
-                <Text>
+                <Text style={styles.Title}>
                   <Text>{item.title.rendered}</Text>
                 </Text>
                 <Pressable
@@ -46,8 +46,8 @@ const SearchFilter = ({ data, input, setInput, navigation }) => {
                     })
                   }
                 >
-                  <Text>Lees Meer</Text>
-                  <Button style="button" title="Add to cart" onPress={increase} />
+                  <Text style={styles.more}>Lees Meer</Text>
+                  <Text style={styles.button}onPress={increase}>Voeg toe aan cart</Text>
                 </Pressable>
               </View>
             );
@@ -55,29 +55,29 @@ const SearchFilter = ({ data, input, setInput, navigation }) => {
 
           if (item.title.rendered.toLowerCase().includes(input.toLowerCase())) {
             return(
-                <View>
-                {item.yoast_head_json?.og_image !== undefined && (
-                  <Image
-                    style={{ width: 420, height: 200 }}
-                    source={{ uri: `${item.yoast_head_json.og_image[0].url}` }}
-                  />
-                )}
-                <Text>
-                  <Text>{item.title.rendered}</Text>
-                </Text>
-                <Pressable
-                  onPress={() =>
-                    navigation.navigate("QuestDetail", {
-                      itemImage: item.yoast_head_json.og_image[0].url,
-                      itemTitle: item.title.rendered,
-                      itemDescription: item.yoast_head_json.og_description,
-                      itemAuthor: item.yoast_head_json.author,
-                    })
-                  }
-                >
-                  <Text>Lees Meer</Text>
-                </Pressable>
-              </View>
+              <View style={styles.article}>
+              {item.yoast_head_json?.og_image !== undefined && (
+                <Image
+                  style={styles.image}
+                  source={{ uri: `${item.yoast_head_json.og_image[0].url}` }}
+                />
+              )}
+              <Text style={styles.Title}>
+                <Text>{item.title.rendered}</Text>
+              </Text>
+              <Pressable
+                onPress={() =>
+                  navigation.navigate("QuestDetail", {
+                    itemImage: item.yoast_head_json.og_image[0].url,
+                    itemTitle: item.title.rendered,
+                    itemDescription: item.yoast_head_json.og_description,
+                    itemAuthor: item.yoast_head_json.author,
+                  })
+                }
+              >
+                <Text style={styles.more}>Lees Meer</Text>
+              </Pressable>
+            </View>
             )
           }
         }}
@@ -92,10 +92,56 @@ const styles = StyleSheet.create({
     cart: {
         width: 50,
         height: 50,
-        marginLeft: 350,
+        marginLeft: 340,
+        marginTop: -60,
       },
     
       counter: {
         marginLeft: 350,
       },
+
+      upper: {
+        marginTop: 10,
+      },
+
+      article: {
+        margin: 20,
+        borderStyle: "solid",
+        borderRadius: 20,
+        borderWidth: 10,
+        borderColor: "white",
+        backgroundColor: "white",
+      },
+
+      image: {
+        width: 350, 
+        height: 200,
+        marginBottom: 15,
+      },
+
+      Title: {
+        fontSize: 20,
+        textAlign: "center",
+        marginBottom: 5,
+      },
+
+      more: {
+        fontSize: 18,
+        textDecorationLine: "underline",
+        textAlign: "center",
+        marginBottom: 20,
+      },
+
+      button: {
+        backgroundColor: "#0080FB",
+        color: "white",
+        padding: 10,
+        textAlign: "center",
+        textAlignVertical: "center",
+        fontSize: 16,
+        borderStyle: "solid",
+        borderRadius: 10,
+        borderWidth: 4,
+        borderColor: "#0080FB",
+      }
 });
