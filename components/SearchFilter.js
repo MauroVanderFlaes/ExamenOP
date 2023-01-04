@@ -90,14 +90,15 @@ export default SearchFilter;
 
 const styles = StyleSheet.create({
     cart: {
-        width: 50,
-        height: 50,
+        width: 40,
+        height: 40,
         marginLeft: 340,
         marginTop: -60,
       },
     
       counter: {
-        marginLeft: 350,
+        marginLeft: 360,
+        marginBottom: 10,
       },
 
       upper: {

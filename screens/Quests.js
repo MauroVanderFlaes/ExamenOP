@@ -35,6 +35,7 @@ const Quests = ({ navigation }) => {
 
   return (
     <View>
+       <Image style={styles.logo} source={require("../assets/logo.png")}/>
       <View style={styles.Search}>
         <View>
           <TextInput
@@ -60,7 +61,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#d9dbda",
     borderRadius: 10,
     alignItems: "center",
-    marginLeft: 10,
-    marginTop: 10,
+    marginLeft: 20,
+    marginTop: 20,
   },
+
+  logo: {
+    width: 130,
+    height: 26,
+    marginTop: 20,
+    alignSelf: "center",
+  }
 });
