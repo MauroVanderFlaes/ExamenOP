@@ -44,7 +44,9 @@ const Quests = ({ navigation }) => {
             style={{ fontSize: 15 }}
             placeholder="Search"
           />
+          
         </View>
+        
       </View>
       <SearchFilter data={Quests} input={input} setInput={setInput} navigation={navigation}/>
     </View>

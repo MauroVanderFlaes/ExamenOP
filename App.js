@@ -8,6 +8,7 @@ import QRCode from "react-native-qrcode-svg";
 import Quests from "./screens/Quests.js";
 import QuestDetail from "./screens/QuestDetail.js";
 import Cart from "./screens/Cart.js";
+import Games from "./screens/Games.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ export default function App() {
         <Stack.Screen name="Meta products" component={Quests} />
         <Stack.Screen name="QuestDetail" component={QuestDetail} />
         <Stack.Screen name="Cart" component={Cart} />
+        <Stack.Screen name="Games" component={Games} />
       </Stack.Navigator>
     </NavigationContainer>
     

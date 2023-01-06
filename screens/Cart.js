@@ -19,6 +19,10 @@ const Cart = ({navigation, route}) => {
             <Text style={styles.Title}>Winkelmandje</Text>
             <Text style={styles.text}>Scan deze QR-code om uw producten te betalen.</Text>
             <QRCode style={styles.code} value='https://maurovdf.be/home/index.php/meta/' size={200} color='#0080FB'/>
+            <Text style={styles.textUnder}>Ben je van plan om een Meta Quest te kopen? Bekijk dan ook zeker onze games.</Text>
+            <Pressable onPress={() => navigation.navigate("Games")}>
+              <Text style={styles.button}>Bekijk games</Text>
+            </Pressable>
         </View>
     );
     
@@ -43,6 +47,7 @@ const styles = StyleSheet.create({
         marginBottom: 40,
         marginLeft: 20,
         marginRight: 20,
+        textAlign: "center",
       },
 
     cart: {
@@ -50,6 +55,31 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
 
+    textUnder: {
+      fontSize: 18,
+      textAlign: "center",
+      marginTop: 220,
+        marginLeft: 20,
+        marginRight: 20,
+    },
+
+    button: {
+      backgroundColor: "#0080FB",
+      color: "white",
+      padding: 10,
+      paddingLeft: 100,
+      paddingRight: 100,
+      textAlign: "center",
+      textAlignVertical: "center",
+      fontSize: 16,
+      borderStyle: "solid",
+      borderRadius: 10,
+      borderWidth: 1,
+      borderColor: "#0080FB",
+      marginTop: 20,
+      marginLeft: 20,
+      marginRight: 20,
+    },
 });
 
 
