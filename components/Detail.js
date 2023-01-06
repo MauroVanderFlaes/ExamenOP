@@ -10,7 +10,7 @@ import {
   FlatList,
 } from "react-native";
 
-const Detail = (props, {navigation}) => {
+const Detail = (props, { navigation }) => {
   return (
     <View>
       <Image style={styles.logo} source={require("../assets/logo.png")} />

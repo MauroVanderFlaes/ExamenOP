@@ -35,7 +35,7 @@ const Quests = ({ navigation }) => {
 
   return (
     <View>
-       <Image style={styles.logo} source={require("../assets/logo.png")}/>
+      <Image style={styles.logo} source={require("../assets/logo.png")} />
       <View style={styles.Search}>
         <View>
           <TextInput
@@ -44,11 +44,14 @@ const Quests = ({ navigation }) => {
             style={{ fontSize: 15 }}
             placeholder="Search"
           />
-          
         </View>
-        
       </View>
-      <SearchFilter data={Quests} input={input} setInput={setInput} navigation={navigation}/>
+      <SearchFilter
+        data={Quests}
+        input={input}
+        setInput={setInput}
+        navigation={navigation}
+      />
     </View>
   );
 };
@@ -72,5 +75,5 @@ const styles = StyleSheet.create({
     height: 26,
     marginTop: 20,
     alignSelf: "center",
-  }
+  },
 });

@@ -16,17 +16,15 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Meta products" component={Quests} />
+        <Stack.Screen name="Meta products" component={Quests} /> 
         <Stack.Screen name="QuestDetail" component={QuestDetail} />
         <Stack.Screen name="Cart" component={Cart} />
         <Stack.Screen name="Games" component={Games} />
       </Stack.Navigator>
     </NavigationContainer>
-    
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-  },
+  container: {},
 });

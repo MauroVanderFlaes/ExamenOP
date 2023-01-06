@@ -20,7 +20,7 @@ const QuestDetail = ({ navigation, route }) => {
         Description={route.params.itemDescription}
         Author={route.params.itemAuthor}
       />
-        <Pressable onPress={() => navigation.navigate("Cart")}>
+      <Pressable onPress={() => navigation.navigate("Cart")}>
         <Text style={styles.button}>Nu kopen</Text>
       </Pressable>
     </View>
