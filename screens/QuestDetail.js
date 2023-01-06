@@ -20,8 +20,29 @@ const QuestDetail = ({ navigation, route }) => {
         Description={route.params.itemDescription}
         Author={route.params.itemAuthor}
       />
+        <Pressable onPress={() => navigation.navigate("Cart")}>
+        <Text style={styles.button}>Nu kopen</Text>
+      </Pressable>
     </View>
   );
 };
 
 export default QuestDetail;
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: "#0080FB",
+    color: "white",
+    padding: 10,
+    textAlign: "center",
+    textAlignVertical: "center",
+    fontSize: 16,
+    borderStyle: "solid",
+    borderRadius: 10,
+    borderWidth: 4,
+    borderColor: "#0080FB",
+    marginTop: 60,
+    marginLeft: 20,
+    marginRight: 20,
+  },
+});
