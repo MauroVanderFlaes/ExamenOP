@@ -1,3 +1,4 @@
+// Importeren van react native
 import { NavigationContainer, TabRouter } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
 import {
@@ -10,6 +11,7 @@ import {
   FlatList,
 } from "react-native";
 
+//aanmaken van de Games object list
 const Games = ({ navigation, route }) => {
   let Games = [
     {
@@ -27,44 +29,56 @@ const Games = ({ navigation, route }) => {
       Description: "Beleef het verhaal en vermoord zombies.",
     },
   ];
+
+  //Aanmaken van de useState voor de Naam
   const [enteredGame, setEnteredGame] = useState("");
   const [gamesData, setGames] = useState(Games);
   const gameHandler = (enteredText) => {
     setEnteredGame(enteredText);
   };
 
+// Aanmaken van de useState voor de description
   const [enteredDesc, setEnteredDesc] = useState("");
   const descHandler = (enteredText) => {
     setEnteredDesc(enteredText);
   };
 
+// Aanmaken van de Handler
   const addGameHandler = () => {
     let newGame = { Naam: enteredGame, Description: enteredDesc };
     let gameList = { Naam: newGame.Naam, Description: newGame.Description };
     setGames((Games) => [...Games, gameList]);
   };
 
+  //Wat moet weergegeven worden op het scherm
   return (
-    <View style={styles.games}>
+    <View>
       <Image style={styles.logo} source={require("../assets/logo.png")} />
       <Text style={styles.title}>Meta Games</Text>
       <View style={styles.form}>
         <Text style={styles.gametitle}>Voeg ook jou favoriete game toe!</Text>
+
+         {/* Text input die de input bijhoud in de gameHandler*/}
         <TextInput
           style={styles.field}
           placeholder="Game naam"
           onChangeText={gameHandler}
         ></TextInput>
+
+         {/* Text input die de input bijhoud in de descHandler */}
         <TextInput
           style={styles.field}
           placeholder="Game beschrijving"
           onChangeText={descHandler}
         ></TextInput>
+         {/* De knop die een Game object aanmaakt als je er op klikt */}
         <Pressable title="add" onPress={addGameHandler}>
           <Text style={styles.button}>Voeg toe</Text>
         </Pressable>
       </View>
       <Text style={styles.title}>Voorgestelde games</Text>
+
+       {/* Flatlist die de game objecten toont */}
       <FlatList
         style={styles.gameslist}
         data={gamesData}
@@ -80,6 +94,7 @@ const Games = ({ navigation, route }) => {
   );
 };
 
+// Styling van de items in dit scherm
 const styles = StyleSheet.create({
   logo: {
     width: 130,
@@ -106,8 +121,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 20,
   },
-
-  games: {},
 
   gameslist: {
     marginTop: 10,

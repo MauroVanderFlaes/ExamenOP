@@ -1,3 +1,4 @@
+// Importeren van react native
 import { NavigationContainer, TabRouter } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
 import {
@@ -10,22 +11,24 @@ import {
   FlatList,
 } from "react-native";
 
+//het aanmaken van de component Detail en wat deze moet weergeven
 const Detail = (props, { navigation }) => {
   return (
     <View>
       <Image style={styles.logo} source={require("../assets/logo.png")} />
       <Image style={styles.image} source={{ uri: `${props.Image}` }} />
-      <Text style={styles.Title}>{props.Title}</Text>
-      <Text style={styles.Description}>
+      <Text style={styles.title}>{props.Title}</Text>
+      <Text style={styles.description}>
         Productbeschrijving: {props.Description}
       </Text>
-      <Text style={styles.Author}>Auteur: {props.Author} van Meta</Text>
+      <Text style={styles.author}>Auteur: {props.Author} van Meta</Text>
     </View>
   );
 };
-
+// exporteren van de Detail component. Als je dit niet doet, wordt deze niet weergegeven
 export default Detail;
 
+// Styling van de items binnen dit component
 const styles = StyleSheet.create({
   logo: {
     width: 130,
@@ -39,7 +42,7 @@ const styles = StyleSheet.create({
     height: 250,
     marginTop: 40,
   },
-  Title: {
+  title: {
     marginTop: 20,
     fontSize: 28,
     textWidth: "Bold",
@@ -48,14 +51,14 @@ const styles = StyleSheet.create({
     color: "#0080FB",
   },
 
-  Description: {
+  description: {
     fontSize: 18,
     marginBottom: 10,
     marginLeft: 20,
     marginRight: 20,
   },
 
-  Author: {
+  author: {
     fontSize: 15,
     marginLeft: 20,
     marginRight: 20,

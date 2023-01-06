@@ -1,3 +1,4 @@
+//importeren van de react native
 import { NavigationContainer, TabRouter } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
 import {
@@ -9,11 +10,15 @@ import {
   Pressable,
   FlatList,
 } from "react-native";
+
+// Importeren van de Detail component
 import Detail from "../components/Detail";
 
+// Wat de screen QuestDetail moet weergeven
 const QuestDetail = ({ navigation, route }) => {
   return (
     <View>
+       {/* Een Detail component met de items die doorgegeven worden via de API */}
       <Detail
         Image={route.params.itemImage}
         Title={route.params.itemTitle}
@@ -27,8 +32,10 @@ const QuestDetail = ({ navigation, route }) => {
   );
 };
 
+// Exporteren van de QuestDetail, als je dit niet doet kan dit scherm niet weergegeven worden
 export default QuestDetail;
 
+// Styling van dit scherm
 const styles = StyleSheet.create({
   button: {
     backgroundColor: "#0080FB",

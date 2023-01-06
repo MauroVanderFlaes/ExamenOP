@@ -1,3 +1,4 @@
+//react native importeren
 import { NavigationContainer, TabRouter } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
 import {
@@ -11,20 +12,32 @@ import {
   Button,
 } from "react-native";
 
+//Zoekbalk aanmaken + functie counter
 const SearchFilter = ({ data, input, setInput, navigation }) => {
   const [counter, setCounter] = useState(0);
+
+  {/* increase functie die aangeroepen zal worden per klik */}
   const increase = () => {
+     {/* De counter met 1 verhogen */}
     setCounter((currentCounter) => currentCounter + 1);
   };
+
+//wat wordt weergegeven op de screen
   return (
     <View style={styles.upper}>
+
+      {/* Maken van het winkelmandje icon */}
       <Pressable onPress={() => navigation.navigate("Cart")}>
         <Image
           style={styles.cart}
           source={require("../assets/shopping-cart.png")}
         />
       </Pressable>
+
+       {/* Counter weergeven */}
       <Text style={styles.counter}>{counter}</Text>
+
+       {/* De list met items die weergegeven moeten worden in Quests */}
       <FlatList
         data={data}
         ListFooterComponent={<View style={{ height: 250 }}></View>}
@@ -38,7 +51,7 @@ const SearchFilter = ({ data, input, setInput, navigation }) => {
                     source={{ uri: `${item.yoast_head_json.og_image[0].url}` }}
                   />
                 )}
-                <Text style={styles.Title}>
+                <Text style={styles.title}>
                   <Text>{item.title.rendered}</Text>
                 </Text>
                 <Pressable
@@ -60,8 +73,11 @@ const SearchFilter = ({ data, input, setInput, navigation }) => {
             );
           }
 
+           /* Het maken van de zoekfilter. Deze werkt zowel met hoofdletters als kleine letters. */
           if (item.title.rendered.toLowerCase().includes(input.toLowerCase())) {
             return (
+
+               /* De items die enkel getoond worden als je zoekt (image, titel en lees meer knop) */
               <View style={styles.article}>
                 {item.yoast_head_json?.og_image !== undefined && (
                   <Image
@@ -69,7 +85,7 @@ const SearchFilter = ({ data, input, setInput, navigation }) => {
                     source={{ uri: `${item.yoast_head_json.og_image[0].url}` }}
                   />
                 )}
-                <Text style={styles.Title}>
+                <Text style={styles.title}>
                   <Text>{item.title.rendered}</Text>
                 </Text>
                 <Pressable
@@ -93,8 +109,10 @@ const SearchFilter = ({ data, input, setInput, navigation }) => {
   );
 };
 
+/* De component exporteren naar je app, als je dit niet toont wordt er niks weergegeven */
 export default SearchFilter;
 
+ /* styling van de items binnen deze component*/
 const styles = StyleSheet.create({
   cart: {
     width: 40,
@@ -128,7 +146,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
 
-  Title: {
+  title: {
     fontSize: 20,
     textAlign: "center",
     marginBottom: 5,

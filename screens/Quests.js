@@ -1,3 +1,4 @@
+// react native imorteren
 import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
@@ -8,11 +9,15 @@ import {
   Pressable,
   FlatList,
 } from "react-native";
+
+// De component Searchfilter importeren
 import SearchFilter from "../components/SearchFilter";
 
+// Aanmaken van een use State voor de quests (de articles)
 const Quests = ({ navigation }) => {
   const [Quests, setQuests] = useState([]);
 
+// De info van je berichten ophalen om deze te kunnen gebruiken
   const getQuests = async () => {
     try {
       const response = await fetch(
@@ -33,10 +38,11 @@ const Quests = ({ navigation }) => {
 
   const [input, setInput] = useState("");
 
+  // Wat weergegeven wordt op het Quests scherm
   return (
     <View>
       <Image style={styles.logo} source={require("../assets/logo.png")} />
-      <View style={styles.Search}>
+      <View style={styles.search}>
         <View>
           <TextInput
             value={input}
@@ -46,6 +52,8 @@ const Quests = ({ navigation }) => {
           />
         </View>
       </View>
+
+       {/* De Search filter component weergeven met de data */}
       <SearchFilter
         data={Quests}
         input={input}
@@ -56,10 +64,12 @@ const Quests = ({ navigation }) => {
   );
 };
 
+// Exporteren van het scherm, als je dit niet doet wordt er niets weergegeven in de app
 export default Quests;
 
+// Styling van de items in dit screen
 const styles = StyleSheet.create({
-  Search: {
+  search: {
     padding: 10,
     flexDirection: "row",
     width: "75%",
