@@ -22,7 +22,7 @@ const Cart = ({ navigation, route }) => {
         Scan deze QR-code om uw producten te betalen.
       </Text>
 
-       {/* Het maken van een QR-code aan de hand van het extra geinstalleerde pakket */}
+      {/* Het maken van een QR-code aan de hand van het extra geinstalleerde pakket */}
       <QRCode
         style={styles.code}
         value="https://maurovdf.be/home/index.php/meta/"
@@ -33,8 +33,14 @@ const Cart = ({ navigation, route }) => {
         Ben je van plan om een Meta Quest te kopen? Bekijk dan ook zeker onze
         games.
       </Text>
-      <Pressable onPress={() => navigation.navigate("Games")}>
-        <Text style={styles.button}>Bekijk games</Text>
+      <Pressable
+        onPress={() => navigation.navigate("Games")}
+        style={({ pressed }) => [
+          { backgroundColor: pressed ? "#0080FB" : "#0668E1" },
+          styles.button,
+        ]}
+      >
+        <Text style={styles.buttontext}>Bekijk games</Text>
       </Pressable>
     </View>
   );
@@ -77,21 +83,24 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    backgroundColor: "#0080FB",
-    color: "white",
-    padding: 10,
+    paddingTop: 15,
+    paddingBottom: 15,
     paddingLeft: 100,
     paddingRight: 100,
-    textAlign: "center",
-    textAlignVertical: "center",
     fontSize: 16,
     borderStyle: "solid",
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: "#0080FB",
-    marginTop: 20,
-    marginLeft: 20,
-    marginRight: 20,
+    borderColor: "#0668E1",
+    marginTop: 30,
+    marginLeft: 0,
+    marginRight: 0,
+  },
+
+  buttontext: {
+    color: "white",
+    textAlign: "center",
+    textAlignVertical: "center",
   },
 });
 

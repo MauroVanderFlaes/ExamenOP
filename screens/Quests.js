@@ -17,7 +17,7 @@ import SearchFilter from "../components/SearchFilter";
 const Quests = ({ navigation }) => {
   const [Quests, setQuests] = useState([]);
 
-// De info van je berichten ophalen om deze te kunnen gebruiken
+  // De info van je berichten ophalen om deze te kunnen gebruiken
   const getQuests = async () => {
     try {
       const response = await fetch(
@@ -53,7 +53,7 @@ const Quests = ({ navigation }) => {
         </View>
       </View>
 
-       {/* De Search filter component weergeven met de data */}
+      {/* De Search filter component weergeven met de data */}
       <SearchFilter
         data={Quests}
         input={input}

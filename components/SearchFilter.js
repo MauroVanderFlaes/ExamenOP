@@ -16,16 +16,19 @@ import {
 const SearchFilter = ({ data, input, setInput, navigation }) => {
   const [counter, setCounter] = useState(0);
 
-  {/* increase functie die aangeroepen zal worden per klik */}
+  {
+    /* increase functie die aangeroepen zal worden per klik */
+  }
   const increase = () => {
-     {/* De counter met 1 verhogen */}
+    {
+      /* De counter met 1 verhogen */
+    }
     setCounter((currentCounter) => currentCounter + 1);
   };
 
-//wat wordt weergegeven op de screen
+  //wat wordt weergegeven op de screen
   return (
     <View style={styles.upper}>
-
       {/* Maken van het winkelmandje icon */}
       <Pressable onPress={() => navigation.navigate("Cart")}>
         <Image
@@ -34,10 +37,10 @@ const SearchFilter = ({ data, input, setInput, navigation }) => {
         />
       </Pressable>
 
-       {/* Counter weergeven */}
+      {/* Counter weergeven */}
       <Text style={styles.counter}>{counter}</Text>
 
-       {/* De list met items die weergegeven moeten worden in Quests */}
+      {/* De list met items die weergegeven moeten worden in Quests */}
       <FlatList
         data={data}
         ListFooterComponent={<View style={{ height: 250 }}></View>}
@@ -65,19 +68,24 @@ const SearchFilter = ({ data, input, setInput, navigation }) => {
                   }
                 >
                   <Text style={styles.more}>Lees Meer</Text>
-                  <Text style={styles.button} onPress={increase}>
-                    Voeg toe aan mandje
-                  </Text>
+                </Pressable>
+                <Pressable
+                  style={({ pressed }) => [
+                    { backgroundColor: pressed ? "#0080FB" : "#0668E1" },
+                    styles.button,
+                  ]}
+                  onPress={increase}
+                >
+                  <Text style={styles.buttontext}>Voeg toe aan mandje</Text>
                 </Pressable>
               </View>
             );
           }
 
-           /* Het maken van de zoekfilter. Deze werkt zowel met hoofdletters als kleine letters. */
+          /* Het maken van de zoekfilter. Deze werkt zowel met hoofdletters als kleine letters. */
           if (item.title.rendered.toLowerCase().includes(input.toLowerCase())) {
             return (
-
-               /* De items die enkel getoond worden als je zoekt (image, titel en lees meer knop) */
+              /* De items die enkel getoond worden als je zoekt (image, titel en lees meer knop) */
               <View style={styles.article}>
                 {item.yoast_head_json?.og_image !== undefined && (
                   <Image
@@ -112,7 +120,7 @@ const SearchFilter = ({ data, input, setInput, navigation }) => {
 /* De component exporteren naar je app, als je dit niet toont wordt er niks weergegeven */
 export default SearchFilter;
 
- /* styling van de items binnen deze component*/
+/* styling van de items binnen deze component*/
 const styles = StyleSheet.create({
   cart: {
     width: 40,
@@ -160,15 +168,20 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    backgroundColor: "#0080FB",
-    color: "white",
-    padding: 10,
-    textAlign: "center",
-    textAlignVertical: "center",
+    padding: 15,
     fontSize: 16,
     borderStyle: "solid",
     borderRadius: 10,
-    borderWidth: 4,
-    borderColor: "#0080FB",
+    borderWidth: 1,
+    borderColor: "#0668E1",
+    marginLeft: 5,
+    marginRight: 5,
+    marginBottom: 5,
+  },
+
+  buttontext: {
+    color: "white",
+    textAlign: "center",
+    textAlignVertical: "center",
   },
 });

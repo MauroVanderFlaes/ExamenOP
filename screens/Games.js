@@ -37,13 +37,13 @@ const Games = ({ navigation, route }) => {
     setEnteredGame(enteredText);
   };
 
-// Aanmaken van de useState voor de description
+  // Aanmaken van de useState voor de description
   const [enteredDesc, setEnteredDesc] = useState("");
   const descHandler = (enteredText) => {
     setEnteredDesc(enteredText);
   };
 
-// Aanmaken van de Handler
+  // Aanmaken van de Handler
   const addGameHandler = () => {
     let newGame = { Naam: enteredGame, Description: enteredDesc };
     let gameList = { Naam: newGame.Naam, Description: newGame.Description };
@@ -58,31 +58,38 @@ const Games = ({ navigation, route }) => {
       <View style={styles.form}>
         <Text style={styles.gametitle}>Voeg ook jou favoriete game toe!</Text>
 
-         {/* Text input die de input bijhoud in de gameHandler*/}
+        {/* Text input die de input bijhoud in de gameHandler*/}
         <TextInput
           style={styles.field}
           placeholder="Game naam"
           onChangeText={gameHandler}
         ></TextInput>
 
-         {/* Text input die de input bijhoud in de descHandler */}
+        {/* Text input die de input bijhoud in de descHandler */}
         <TextInput
           style={styles.field}
           placeholder="Game beschrijving"
           onChangeText={descHandler}
         ></TextInput>
-         {/* De knop die een Game object aanmaakt als je er op klikt */}
-        <Pressable title="add" onPress={addGameHandler}>
-          <Text style={styles.button}>Voeg toe</Text>
+        {/* De knop die een Game object aanmaakt als je er op klikt */}
+        <Pressable
+          title="add"
+          onPress={addGameHandler}
+          style={({ pressed }) => [
+            { backgroundColor: pressed ? "#EEEEEE" : "white" },
+            styles.button,
+          ]}
+        >
+          <Text style={styles.buttontext}>Voeg toe</Text>
         </Pressable>
       </View>
       <Text style={styles.title}>Voorgestelde games</Text>
 
-       {/* Flatlist die de game objecten toont */}
+      {/* Flatlist die de game objecten toont */}
       <FlatList
         style={styles.gameslist}
         data={gamesData}
-        ListFooterComponent={<View style={{ height: 250 }}></View>}
+        ListFooterComponent={<View style={{ height: 500 }}></View>}
         renderItem={({ item }) => (
           <View style={styles.game}>
             <Text style={styles.gametitle}>{item.Naam}</Text>
@@ -107,7 +114,8 @@ const styles = StyleSheet.create({
     margin: 20,
     borderStyle: "solid",
     borderRadius: 20,
-    borderWidth: 10,
+    borderWidth: 1,
+    padding: 20,
     borderColor: "#0080FB",
     backgroundColor: "#0080FB",
   },
@@ -133,11 +141,7 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    backgroundColor: "white",
-    color: "#0080FB",
-    padding: 10,
-    textAlign: "center",
-    textAlignVertical: "center",
+    padding: 15,
     fontSize: 16,
     borderStyle: "solid",
     borderRadius: 10,
@@ -146,11 +150,21 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 
+  buttontext: {
+    color: "#0668E1",
+    textAlign: "center",
+    textAlignVertical: "center",
+  },
+
   game: {
     margin: 20,
     borderStyle: "solid",
     borderRadius: 20,
-    borderWidth: 10,
+    borderWidth: 1,
+    paddingTop: 20,
+    paddingBottom: 20,
+    paddingLeft: 5,
+    paddingRight: 5,
     borderColor: "white",
     backgroundColor: "white",
   },
